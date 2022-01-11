@@ -27,7 +27,7 @@ form.addEventListener('submit', function (e) {
         input.value = '';
     }
 });
-//join the room. Useful to count number of users in a room.
+//Join the room.
 socket.emit('joinroom', ev)
 socket.on(ev, function (msg) {
 
