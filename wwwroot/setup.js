@@ -1,4 +1,3 @@
-msg = ""
 ev = ""
 if (location.href.includes('?')) {
     var queryStr = location.href.split('?')[1]
@@ -7,10 +6,9 @@ if (location.href.includes('?')) {
         var eIndex = param.indexOf("e") + 1
         if (eIndex != 0)
             ev = param[eIndex]
+        else
+            ev = "default"
     }
-    var msgIndex = param.indexOf("msg") + 1
-    if (msgIndex != 0)
-        msg = param[msgIndex]
 }
 var socket = io();
 
@@ -43,9 +41,3 @@ socket.on(ev, function (msg) {
     }
 
 });
-if (msg)
-    socket.emit('broadcast', {
-        ev: ev,
-        type: 1,
-        msg: msg
-    });
