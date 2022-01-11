@@ -1,0 +1,14 @@
+{
+  "name": "rtpaste",
+  "version": "0.0.1",
+  "description": "my first socket.io app",
+  "scripts": {
+    "start": "index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "helmet": "^5.0.1",
+    "socket.io": "^4.4.1"
+  },
+  "license": "MIT"
+}
