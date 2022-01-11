@@ -6,10 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const helmet = require('helmet')
 app.use(helmet())
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/wwwroot/index.html');
-});
-
+app.use(express.static('wwwroot'))
 io.on('connection', (socket) => {
   //New user connected
   socket.on('joinroom', (room) => {
