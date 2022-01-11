@@ -14,6 +14,7 @@ io.on('connection', (socket) => {
   })
   socket.on('broadcast', (broad) => {
     try {
+      //Broadcast is blocked if more than two users in a room for security purposes.
       if (io.sockets.adapter.rooms.get(broad.ev).size > 2)
         socket.broadcast.emit(broad.ev, { type: -1 });
       else
