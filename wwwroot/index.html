@@ -6,9 +6,13 @@
 </head>
 
 <body>
-  <form id="form" class="">
-    <textarea class="form-control" placeholder="Enter text" type="text" id="txt" name="txt"></textarea>
-    <input type="submit" value="Send" class="btn btn-primary" />
+  <form id="form">
+    <div class="form-group">
+      <textarea class="form-control" placeholder="Enter text" type="text" id="txt" name="txt"></textarea>
+    </div>
+    <div class="form-group" style="margin-top: 5px;">
+      <input type="submit" value="Send" class="btn btn-primary" />
+    </div>
   </form>
   <div id="list"></div>
   <script src="/socket.io/socket.io.js"></script>
