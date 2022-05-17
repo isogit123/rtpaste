@@ -23,8 +23,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 app.post('/upload', upload.array('files'), function (req, res, next) {
   let filenames = req.files.map((file => file.filename))
-res.send(filenames)
+  res.send(filenames)
 
+})
+
+app.get('/axios.min.js', function (req, res) {
+  res.sendFile(__dirname + '/node_modules/axios/dist/axios.min.js')
 })
 
 io.on('connection', (socket) => {
