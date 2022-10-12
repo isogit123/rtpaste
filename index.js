@@ -1,34 +1,17 @@
 const express = require('express')
-const multer = require('multer')
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const helmet = require('helmet')
-const { uuid } = require('uuidv4');
 
-app.use(helmet())
 app.use(express.static('wwwroot'))
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, __dirname + '/wwwroot/uploads')
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuid() + '_' + file.originalname)
-  }
-})
-
-const upload = multer({ storage: storage })
-app.post('/upload', upload.array('files'), function (req, res, next) {
-  let filenames = req.files.map((file => file.filename))
-  res.send(filenames)
-
-})
 
 app.get('/axios.min.js', function (req, res) {
   res.sendFile(__dirname + '/node_modules/axios/dist/axios.min.js')
+})
+app.get('/uuidv4.js', function (req, res) {
+  res.sendFile(__dirname + '/node_modules/uuidv4/dist/uuidv4.js')
 })
 
 io.on('connection', (socket) => {
